@@ -17,9 +17,14 @@ angular.module('panzoom', ['monospaced.mousewheel'])
 			config: '=',
 			model: '='
 		},
-		controller: ['$scope', '$element', function($scope, $element) {
-			var frameElement = $element;
-			var contentElement = $element.find('.pan-zoom-contents');
+		controller: ['$scope', function($scope) {
+
+			//var frameElement = $element;
+
+			var frameElement = angular.element('.pan-zoom-frame');
+
+			//var contentElement = $element.find('.pan-zoom-contents');
+			var contentElement = angular.element('.pan-zoom-contents');
 
 			var getCssScale = function(zoomLevel) {
 				return Math.pow($scope.config.scalePerZoomLevel, zoomLevel - $scope.config.neutralZoomLevel);
@@ -57,8 +62,12 @@ angular.module('panzoom', ['monospaced.mousewheel'])
 				// let (w, h) denote the size of the rectangle to zoom to
 				// then we must CSS scale by the min of W/w and H/h in order to just fit the rectangle
 
-				var W = $element.width();
-				var H = $element.height();
+				//var W = $element.width();
+				//var H = $element.height();
+
+				var W = angular.element('.pan-zoom-frame').width();
+				var H = angular.element('.pan-zoom-frame').height();
+
 				var w = rect.width;
 				var h = rect.height;
 
@@ -256,10 +265,10 @@ angular.module('panzoom', ['monospaced.mousewheel'])
 			};
 
 			var AnimationTick = function() {
-				var lastTick = jQuery.now();
+				var lastTick = (new Date).getTime();
 
 				return function() {
-					var now = jQuery.now();
+					var now = (new Date).getTime();
 					var deltaTime = (now - lastTick) / 1000;
 					lastTick = now;
 
@@ -315,10 +324,9 @@ angular.module('panzoom', ['monospaced.mousewheel'])
 			};
 			syncModelToDOM();
 			var tick = new AnimationTick();
-			jQuery.fx.timer(tick);
+			//jQuery.fx.timer(tick);
 
 			// event handlers
-
 			$scope.onDblClick = function($event) {
 				if ( $scope.config.zoomOnDoubleClick ) {
 					var clickPoint = { x: $event.pageX - frameElement.offset().left, y: $event.pageY - frameElement.offset().top };
@@ -332,7 +340,7 @@ angular.module('panzoom', ['monospaced.mousewheel'])
 			$scope.onMousedown = function($event) {
 				if ( $scope.config.panOnClickDrag ) {
 					previousPosition = { x: $event.pageX, y: $event.pageY };
-					lastMouseEventTime = jQuery.now();
+					lastMouseEventTime = (new Date).getTime();
 					$scope.dragging = true;
 
 					$document.on('mousemove', $scope.onMousemove);
@@ -354,7 +362,7 @@ angular.module('panzoom', ['monospaced.mousewheel'])
 					// return;
 				}
 
-				var now = jQuery.now();
+				var now = (new Date).getTime();
 				var timeSinceLastMouseEvent = (now - lastMouseEventTime) / 1000;
 				lastMouseEventTime = now;
 				var dragDelta = { x: $event.pageX - previousPosition.x, y: $event.pageY - previousPosition.y };
@@ -372,7 +380,7 @@ angular.module('panzoom', ['monospaced.mousewheel'])
 			};
 
 			$scope.onMouseup = function() {
-				var now = jQuery.now();
+				var now = (new Date).getTime();
 				var timeSinceLastMouseEvent = (now - lastMouseEventTime) / 1000;
 
 				if ($scope.panVelocity) {

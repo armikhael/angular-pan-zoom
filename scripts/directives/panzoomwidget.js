@@ -7,8 +7,10 @@ angular.module('panzoomwidget', [])
 			config: '=',
 			model: '='
 		},
-		controller: ['$scope', '$element', function($scope, $element) {
-			var zoomSliderWidget = $element.find('.zoom-slider-widget');
+		controller: ['$scope', function($scope) {
+			//var zoomSliderWidget = $element.find('.zoom-slider-widget');
+			var zoomSliderWidget = angular.element('.zoom-slider-widget');
+
 			var isDragging = false;
 
 			var sliderWidgetTopFromZoomLevel = function(zoomLevel) {
@@ -20,7 +22,8 @@ angular.module('panzoomwidget', [])
 			};
 
 			var getZoomLevelForMousePoint = function($event) {
-				var sliderWidgetTop = $event.pageY - $element.find('.zoom-slider').offset().top - $scope.widgetConfig.zoomLevelHeight/2;
+				//var sliderWidgetTop = $event.pageY - $element.find('.zoom-slider').offset().top - $scope.widgetConfig.zoomLevelHeight/2;
+				var sliderWidgetTop = $event.pageY - angular.element('.zoom-slider').offset().top - $scope.widgetConfig.zoomLevelHeight/2;
 				return zoomLevelFromSliderWidgetTop(sliderWidgetTop);
 			};
 
