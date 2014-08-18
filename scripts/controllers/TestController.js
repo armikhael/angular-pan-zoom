@@ -1,4 +1,4 @@
-angular.module('test', ['panzoom', 'panzoomwidget'])
+angular.module('test', ['panzoom', 'panzoomwidget','dragModule'])
 
 .controller('TestController', ['$scope',
                                function($scope) {

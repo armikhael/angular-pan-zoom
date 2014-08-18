@@ -324,7 +324,7 @@ angular.module('panzoom', ['monospaced.mousewheel'])
 			};
 			syncModelToDOM();
 			var tick = new AnimationTick();
-			//jQuery.fx.timer(tick);
+			jQuery.fx.timer(tick);
 
 			// event handlers
 			$scope.onDblClick = function($event) {
