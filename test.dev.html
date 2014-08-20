@@ -20,8 +20,8 @@
        
        <panzoom config="panzoomConfig" model="panzoomModel" style="width:800px; height: 600px">
          
-         <img my-draggable src="images/shark_attack.jpg" style="position:absolute"/>
-         <img my-draggable src="images/shark_attack-.jpg" style="position:absolute"/>
+         <img id="no-pan" my-draggable src="images/shark_attack.jpg" style="position:absolute"/>
+         <img id="no-pan" my-draggable src="images/1.jpg" style="position:absolute"/>
 
          <svg style="position:absolute" width="800px" height="600px">
             <rect ng-repeat="rect in rects" ng-attr-x="{{rect.x}}" ng-attr-y="{{rect.y}}" ng-attr-width="{{rect.width}}" ng-attr-height="{{rect.height}}" rx="10" ry="10" style="fill:none;stroke-width:2;stroke:rgb(255,0,0)"/>
@@ -30,7 +30,6 @@
        </panzoom>
      
      </div>
-
      <button type="button" class="btn" ng-click="zoomToShark()">Zoom to shark</button>
      <button type="button" class="btn" ng-click="zoomToChopper()">Zoom to chopper</button>
      <button type="button" class="btn" ng-click="zoomToLadder()">Zoom to ladder</button>

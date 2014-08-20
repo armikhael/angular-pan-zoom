@@ -15,7 +15,7 @@ angular.module('test', ['panzoom', 'panzoomwidget','dragModule'])
 		zoomLevels: 12,
 		neutralZoomLevel: 5,
 		scalePerZoomLevel: 1.5,
-		initialZoomToFit: shark
+		//initialZoomToFit: shark
 	};
 
 	// The panzoom model should initialle be empty; it is initialized by the <panzoom>

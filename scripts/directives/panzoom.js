@@ -348,6 +348,7 @@ angular.module('panzoom', ['monospaced.mousewheel'])
 				}
 			};
 			var pan = function(delta) {
+
 				delta.x = delta.x || 0;
 				delta.y = delta.y || 0;
 				$scope.base.pan.x += delta.x;
@@ -361,14 +362,17 @@ angular.module('panzoom', ['monospaced.mousewheel'])
 				if (!$scope.dragging) {
 					// return;
 				}
-
+				// console.log(!$scope.dragging);
 				var now = (new Date).getTime();
 				var timeSinceLastMouseEvent = (now - lastMouseEventTime) / 1000;
 				lastMouseEventTime = now;
 				var dragDelta = { x: $event.pageX - previousPosition.x, y: $event.pageY - previousPosition.y };
-				pan(dragDelta);
 
-
+				// var target = document.getElementById('#no-pan');
+				// if !($(target).mouseover(){
+				pan(dragDelta);	
+				// }
+				
 				// set these for the animation slow down once drag stops
 				$scope.panVelocity = {
 						x : dragDelta.x / timeSinceLastMouseEvent,
