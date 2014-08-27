@@ -370,7 +370,8 @@ angular.module('panzoom', ['monospaced.mousewheel'])
 
 				// var target = document.getElementById('#no-pan');
 				// if !($(target).mouseover(){
-				pan(dragDelta);	
+				pan(dragDelta);
+				//console.log(target);	
 				// }
 				
 				// set these for the animation slow down once drag stops
