@@ -1,6 +1,8 @@
-angular.module('test', ['panzoom', 'panzoomwidget','dragModule'])
+var example = angular.module('test', ['panzoom','panzoomwidget','dragModule','ngDragDrop']);
+// var example = angular.module('test', ['ngDragDrop']);
 
-.controller('TestController', ['$scope',
+
+example.controller('TestController', ['$scope',
                                function($scope) {
 	var shark = { x : 391, y: 371, width: 206, height: 136 };
 	var chopper = { x : 88, y: 213, width: 660, height: 144 };
@@ -15,7 +17,7 @@ angular.module('test', ['panzoom', 'panzoomwidget','dragModule'])
 		zoomLevels: 12,
 		neutralZoomLevel: 5,
 		scalePerZoomLevel: 1.5,
-		//initialZoomToFit: shark
+		initialZoomToFit: chopper
 	};
 
 	// The panzoom model should initialle be empty; it is initialized by the <panzoom>
@@ -37,3 +39,27 @@ angular.module('test', ['panzoom', 'panzoomwidget','dragModule'])
 
 }
 ]);
+
+example.controller('MainCtrl', function($scope) {
+  $scope.men = [
+      'John',
+      'Jack',
+      'Mark',
+      'Ernie'
+      ];
+      
+      
+      $scope.women = ['hola'];  
+      
+      $scope.addText = "";
+      
+      
+      $scope.dropSuccessHandler = function($event,index,array){
+          array.splice(index,1);
+      };
+      
+      $scope.onDrop = function($event,$data,array){
+          array.push($data);
+      };
+  
+});
