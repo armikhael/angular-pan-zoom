@@ -2,11 +2,14 @@ var example = angular.module('test', ['panzoom','panzoomwidget','dragModule','ng
 // var example = angular.module('test', ['ngDragDrop']);
 
 
-example.controller('TestController', ['$scope',
-                               function($scope) {
+example.controller('TestController', ['$scope', function($scope) {
 	var shark = { x : 391, y: 371, width: 206, height: 136 };
 	var chopper = { x : 88, y: 213, width: 660, height: 144 };
 	var ladder = { x : 333, y: 325, width: 75, height: 200 };
+
+
+  
+
 
 	$scope.rects = [ chopper, shark, ladder ];
 
@@ -36,6 +39,25 @@ example.controller('TestController', ['$scope',
 	$scope.zoomToLadder = function() {
 		$scope.panzoomModel.zoomToFit(ladder);
 	};
+
+
+	$scope.mouseover = function(){
+		//console.log("true");
+		//$cookieStore.put('over', true);
+		localStorage.setItem("over", "true");
+		//console.log($cookieStore.get('over'));
+	};
+
+	$scope.mouseleave = function(){
+		//console.log("false");
+		//$cookieStore.put('over', false);
+		localStorage.setItem("over", "false");
+		//console.log($cookieStore);
+		//console.log($cookieStore.get('over'));
+	};
+
+	// console.log($scope.panzoomModel);
+	//console.log($scope);
 
 }
 ]);

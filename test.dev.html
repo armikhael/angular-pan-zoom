@@ -6,12 +6,21 @@
 		    border: 2px solid black;
 		}
     </style>
+    <script src="bower_components/jQuery/dist/jquery.js"></script>
+    <script src="bower_components/hamsterjs/hamster.js"></script>
+    <script src="bower_components/angular/angular.min.js"></script>
+    <script src="bower_components/angular-mousewheel/mousewheel.js"></script>
+
+    <script src="scripts/directives/panzoom.js"></script>
+    <script src="scripts/directives/panzoomwidget.js"></script>
+    <script src="scripts/controllers/TestController.js"></script>
+    <script src="scripts/directives/dragable.js"></script>
+    <script src="scripts/directives/draganddrop.js"></script>
+    <script src="scripts/directives/angular-cookies.js"></script>
   </head>
   <body>
 
-  <div>
-    <span my-draggable>Drag ME</span>
-  </div>
+
 
       <div class="container" ng-controller="MainCtrl">
             <div class="row topRow">
@@ -37,21 +46,31 @@
   <div ng-controller="TestController">
      <div style="position:relative">
        
+  <div>
+    <span my-draggable ng-mouseover="mouseover()" ng-mouseleave="mouseleave()">Drag ME</span>
+
+  </div>
+      <span ng-show="over">
+            <a>Edit</a>
+        </span>       
+
        <panzoomwidget config="panzoomConfig" model="panzoomModel" style="position:absolute;top:10px;left:10px;z-index:1"></panzoomwidget>
+
        
+
        <panzoom config="panzoomConfig" model="panzoomModel" style="width:800px; height: 600px">
          <div class="col-xs-6">
                     <ul ui-on-Drop="onDrop($event,$data,women)">
                         <li ui-draggable="true" drag="woman" 
                         on-drop-success="dropSuccessHandler($event,$index,women)"
                         ng-repeat="woman in women track by $index">
-                            <a my-draggable>{{woman}}</a>
+                            <a my-draggable my-draggable ng-mouseover="mouseover()" ng-mouseleave="mouseleave()">{{woman}}</a>
                         </li>
                     </ul>
                 </div>
-         <img id="no-pan" my-draggable src="images/shark_attack.jpg" style="position:absolute"/>
-         <img id="no-pan" my-draggable src="images/1.jpg" style="position:absolute"/>
-         <span my-draggable>hola:S</span>
+         <img id="no-pan" my-draggable ng-mouseover="mouseover()" ng-mouseleave="mouseleave()" src="images/shark_attack.jpg" style="position:absolute"/>
+         <img id="no-pan" my-draggable ng-mouseover="mouseover()" ng-mouseleave="mouseleave()" src="images/1.jpg"  style="position:absolute"/>
+         <h1 my-draggable ng-mouseover="mouseover()" ng-mouseleave="mouseleave()">hola:S</h1>
 
          <svg style="position:absolute" width="800px" height="600px">
             <rect ng-repeat="rect in rects" ng-attr-x="{{rect.x}}" ng-attr-y="{{rect.y}}" ng-attr-width="{{rect.width}}" ng-attr-height="{{rect.height}}" rx="10" ry="10" style="fill:none;stroke-width:2;stroke:rgb(255,0,0)"/>
@@ -67,14 +86,5 @@
    </div>
    </body>
 
-    <script src="bower_components/jQuery/dist/jquery.js"></script>
-    <script src="bower_components/hamsterjs/hamster.js"></script>
-    <script src="bower_components/angular/angular.min.js"></script>
-    <script src="bower_components/angular-mousewheel/mousewheel.js"></script>
-
-    <script src="scripts/directives/panzoom.js"></script>
-    <script src="scripts/directives/panzoomwidget.js"></script>
-    <script src="scripts/controllers/TestController.js"></script>
-    <script src="scripts/directives/dragable.js"></script>
-    <script src="scripts/directives/draganddrop.js"></script>
+ 
 </html>

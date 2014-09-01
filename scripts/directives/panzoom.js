@@ -370,7 +370,31 @@ angular.module('panzoom', ['monospaced.mousewheel'])
 
 				// var target = document.getElementById('#no-pan');
 				// if !($(target).mouseover(){
-				pan(dragDelta);
+				//console.log(angular.element(document.querySelector('#no-pan')));
+
+				// $cookieStore.put('prueba','funcionando');
+				//console.log($cookieStore.put('over', true));
+
+				//console.log(localStorage.getItem("over"));
+
+				var prueba = localStorage.getItem("over");
+
+					
+
+				console.log(prueba);
+				if (prueba == "false"){	
+					pan(dragDelta);
+					console.log("-- False --");		
+					console.log("1" + prueba);
+				}
+				else {
+					$document.off('mousemove', $scope.onMousemove);
+
+					console.log("-- True --");	
+					console.log("2" +  prueba);
+				}
+
+				//pan(dragDelta);
 				//console.log(target);	
 				// }
 				
@@ -383,6 +407,7 @@ angular.module('panzoom', ['monospaced.mousewheel'])
 				previousPosition = { x: $event.pageX, y: $event.pageY };
 				$event.preventDefault();
 			};
+
 
 			$scope.onMouseup = function() {
 				var now = (new Date).getTime();
