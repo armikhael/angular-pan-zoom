@@ -377,26 +377,22 @@ angular.module('panzoom', ['monospaced.mousewheel'])
 
 				//console.log(localStorage.getItem("over"));
 
-				var prueba = localStorage.getItem("over");
+				var check = localStorage.getItem("over");
 
-					
-
-				console.log(prueba);
-				if (prueba == "false"){	
+				//console.log(check);
+				if (check == "false"){	
 					pan(dragDelta);
-					console.log("-- False --");		
-					console.log("1" + prueba);
+					//console.log("-- False --");		
+					//console.log("1" + check);
 				}
 				else {
 					$document.off('mousemove', $scope.onMousemove);
-
-					console.log("-- True --");	
-					console.log("2" +  prueba);
+					//console.log("-- True --");	
+					//console.log("2" +  check);
 				}
 
 				//pan(dragDelta);
 				//console.log(target);	
-				// }
 				
 				// set these for the animation slow down once drag stops
 				$scope.panVelocity = {
