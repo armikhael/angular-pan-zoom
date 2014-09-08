@@ -22,10 +22,53 @@
         function mousemove(event) {
           y = event.pageY - startY;
           x = event.pageX - startX;
+          
+          // console.log('X: '+ x  + ' Y: '+ y);
+          // console.log('startX '+ startX + ' startY '+ startY);
+          // console.log('event.pageY '+ event.pageY + ' event.pageX '+ event.pageX);
+          
+          //var NewZoomLevel = localStorage.getItem("NewZoomLevel");
+          //console.log('NewZoomLevel ' + NewZoomLevel);
+
+          // if(NewZoomLevel < 1){
+          //   event.preventDefault();
+          //   y = event.pageY - startY;
+          //   x = event.pageX - startX;
+          //   console.log('1');
+          //   element.css({
+          //   top: y  + '0px',
+          //   left:  x  + '0px'
+          // });
+          //   console.log('X: '+ x  + ' Y: '+ y);
+          // }
+          // else if(NewZoomLevel < 3){
+          //   event.preventDefault();
+          //   y = event.pageY - startY;
+          //   x = event.pageX - startX;
+          //   console.log('3');
+          //   element.css({
+          //   top: y * 3 + 'px',
+          //   left:  x * 3 + 'px'
+          // });
+          //   console.log('X: '+ x  + ' Y: '+ y);
+          // }
+          // else if(NewZoomLevel < 11){
+          //   event.preventDefault();
+          //   y = event.pageY - startY;
+          //   x = event.pageX - startX;
+          //   console.log('11');
+          //   element.css({
+          //   top:  y + 'px',
+          //   left: x + 'px'
+          // });
+          //   console.log('X: '+ x  + ' Y: '+ y);
+          // }
+          
           element.css({
-            top: y + 'px',
-            left:  x + 'px'
+            top:  y *3 + 'px',
+            left: x *3 + 'px'
           });
+          //console.log('X: '+ x  + ' Y: '+ y);       
         }
 
         function mouseup() {

@@ -156,6 +156,8 @@ angular.module('panzoom', ['monospaced.mousewheel'])
 				// keep in bounds
 				newZoomLevel = Math.max(0, newZoomLevel);
 				newZoomLevel = Math.min($scope.config.zoomLevels - 1, newZoomLevel);
+				//console.log('clickPoint '+newZoomLevel);
+				localStorage.setItem("NewZoomLevel", newZoomLevel);
 
 				var deltaZoomLevel = newZoomLevel - $scope.base.zoomLevel;
 				if (!deltaZoomLevel) {
@@ -393,7 +395,7 @@ angular.module('panzoom', ['monospaced.mousewheel'])
 
 				//pan(dragDelta);
 				//console.log(target);	
-				
+
 				// set these for the animation slow down once drag stops
 				$scope.panVelocity = {
 						x : dragDelta.x / timeSinceLastMouseEvent,
@@ -439,7 +441,9 @@ angular.module('panzoom', ['monospaced.mousewheel'])
 
 					var sign = $deltaY / Math.abs($deltaY);
 
-					var clickPoint = { x: $event.pageX - frameElement.offset().left, y: $event.pageY - frameElement.offset().top };
+					var clickPoint = { x: $event.pageX - frameElement.offset().left, 
+						               y: $event.pageY - frameElement.offset().top 
+						             };
 
 					if (sign < 0) {
 						zoomIn(clickPoint);

@@ -7,18 +7,14 @@ example.controller('TestController', ['$scope', function($scope) {
 	var chopper = { x : 88, y: 213, width: 660, height: 144 };
 	var ladder = { x : 333, y: 325, width: 75, height: 200 };
 
-
-  
-
-
 	$scope.rects = [ chopper, shark, ladder ];
 
 	// Instantiate models which will be passed to <panzoom> and <panzoomwidget>
 
 	// The panzoom config model can be used to override default configuration values
 	$scope.panzoomConfig = {
-		zoomLevels: 12,
-		neutralZoomLevel: 5,
+		zoomLevels: 8,
+		neutralZoomLevel: 3,
 		scalePerZoomLevel: 1.5,
 		initialZoomToFit: chopper
 	};
