@@ -65,8 +65,8 @@
           // }
           
           element.css({
-            top:  y *3 + 'px',
-            left: x *3 + 'px'
+            top:  y *2 + 'px',
+            left: x *2 + 'px'
           });
           //console.log('X: '+ x  + ' Y: '+ y);       
         }
